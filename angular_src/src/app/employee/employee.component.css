@@ -1,0 +1,91 @@
+.container {
+    margin-top: 10px;
+}
+
+
+.design {
+    background-color: #28A745;
+    color: white;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+.dev {
+    background-color: #2693ff;
+    color: white;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+.btn {
+    margin: 10px;
+}
+
+
+.form {
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    position: absolute;
+    padding-top: 30px;
+    cursor: pointer;
+    margin-left: 30%;
+    background-color: white;
+    box-shadow: 1px 1px 7px 3px rgba(135,126,126,0.74);
+    -webkit-box-shadow: 1px 1px 7px 3px rgba(135,126,126,0.74);
+    -moz-box-shadow: 1px 1px 7px 3px rgba(135,126,126,0.74);
+}
+
+.form:hover {
+    box-shadow: 1px 1px 18px 6px rgba(135,126,126,0.74);
+    -webkit-box-shadow: 1px 1px 18px 6px rgba(135,126,126,0.74);
+    -moz-box-shadow: 1px 1px 18px 6px rgba(135,126,126,0.74);
+}
+
+
+.form h3 {
+    text-align: center;
+}
+
+.form button {
+    border: 1px solid black;
+}
+
+.form form {
+    margin: auto;
+    padding: 40px;
+}
+
+.form button:hover {
+    opacity: 0.75;
+}
+
+.cards {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+/* Loading spinner */
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    border-top-color:  #28A745;
+    animation: spinner .8s linear infinite;
+  }

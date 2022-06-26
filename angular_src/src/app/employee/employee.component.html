@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Employee Management</h2>
+        </div>
+        
+        <div class="col ml-auto text-right">
+            <button 
+            type="button"
+            class="btn btn-success"
+            (click)="openForm()"
+            >
+            <fa-icon [icon]="plus"></fa-icon>
+            Add Employee</button>
+        </div>
+    </div>
+
+    <hr>
+  <div
+    *ngIf="loading"
+    class="spinner"   
+    style="text-align: center;"
+>
+<span style="font-weight: bold;"> Loading from database....</span>
+</div>
+<div 
+*ngIf="!loading"
+class="row">
+    <div
+    *ngFor="let emp of empArray"
+    class="row cards"
+    >
+    <div class="card" 
+    style="width: 18rem;">
+    <div 
+    [ngClass]="showModal ? 'blur': ''"
+    class="card-body">
+          <h5 class="card-title">{{emp.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{emp.position}}</h6>
+          <p 
+          [ngClass]="emp.dept == 'Design' ? 'design':'dev'"
+          class="card-text">{{emp.dept}}</p>
+          <hr>
+          <button 
+          (click)="onUpdateEmployee(emp)"
+          id="edit" 
+          class="btn btn-primary bg-white text-primary">Edit</button>
+          <button
+          (click)="onDeleteEmployee(emp._id)" 
+          id="delete" 
+          class="btn btn-danger bg-white text-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- form -->
+    <div 
+      *ngIf="showModal"
+      class="form">
+        <h3>{{editMode ? 'Update': 'Add'}} Employee</h3>
+        <form
+        [formGroup]="empForm"
+        (ngSubmit)="onAddEmployee()"
+        >
+        <!-- ngModelGroup="empData"
+        #empData = "ngModelGroup" -->
+        <div
+      >
+        <div class="form-group">
+          <label>Enter Name</label><br>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="email"
+          name="name"
+          formControlName="name"
+          >
+          <p 
+          *ngIf="!empForm.controls['name'].valid && empForm.controls['name'].touched"
+          style="color: red;">*Name is required</p>
+        </div>
+        <div class="form-group">
+          <label>Enter Position</label><br>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="position"
+          name="position"
+          formControlName="position"
+          >
+          <p 
+          *ngIf="!empForm.controls['position'].valid && empForm.controls['position'].touched"
+          style="color: red;">*Position is required</p>
+        </div>
+
+        <div class="form-group">
+          <label>Enter Department</label>
+          <select 
+          formControlName="dept"
+          class="form-control"
+          ngModel="Design"
+          name="department">
+              <option 
+              *ngFor="let dept of departments"
+              name="dept"
+              required
+              [ngValue]="dept">{{dept}}</option>
+          </select>
+        </div>
+              
+    </div>
+        <div class="row">
+            <button
+            type="button" 
+            class="btn btn-default"
+            (click)="closeForm()"
+            >Close</button>
+            <button
+            [disabled]="!empForm.valid" 
+            type="submit" 
+            class="btn btn-success">{{editMode ? 'Update': 'Submit'}}</button>
+        </div>
+      </form>
+    </div>
+</div>
+</div>
+
+
