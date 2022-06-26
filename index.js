@@ -13,12 +13,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use('/employees', routes);
 
-
-app.use(express.static(__dirname+'/angular_src/dist/employee-mngmt'))
-
-app.get('/*',(req,res) => {
-    res.sendFile(path.join(__dirname+'/angular_src/dist/employee-mngmt/index.html'))
-})
+if(process.env.NODE_ENV == "production"){
+    app.use(express.static(path.join(__dirname+'/angular_src/dist/employee-mngmt')))
+    
+    app.get('*',(req,res) => {
+        res.sendFile(path.join(__dirname+'/angular_src/dist/employee-mngmt/index.html'))
+    })
+}
 
 app.use((req, res, next) => {
     const error = new Error("Nothing Found!! Check your app again..");
