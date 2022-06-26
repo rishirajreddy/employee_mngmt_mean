@@ -5,6 +5,7 @@ const db = require('./db/db')
 const cors = require("cors");
 const routes = require('./routes/routes');
 const port = process.env.PORT || 5000;
+const path = require('path');
 
 db();
 app.use(bodyParser.json());
@@ -15,7 +16,7 @@ app.use('/employees', routes);
 app.use(express.static(__dirname+'/angular_src/dist/employee-mngmt'))
 
 app.get('/*',(req,res) => {
-    res.sendFile(__dirname+'/angular_src/dist/employee-mngmt/index.html')
+    res.sendFile(path.join(__dirname+'/angular_src/dist/employee-mngmt/index.html'))
 })
 
 
