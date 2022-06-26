@@ -3,8 +3,21 @@
  const router = express.Router();
 
  const ObjectID = require('mongoose').Types.ObjectId;
- //POst api
- router.post('/',async(req,res) => {
+
+ //get api
+ router.get('/', async(req,res) => {
+    Employee.find((err, doc) => {
+        if(err) {
+            console.log("Error:" + err);
+        }else {
+            console.log("Success");
+            res.json(doc);
+        }
+    })
+})
+
+//POst api
+router.post('/post',async(req,res) => {
     let employee = new Employee({
         name: req.body.name,
         position: req.body.position,
@@ -18,18 +31,6 @@
     })
     .catch(err => console.error(err));
  })
-
- //get api
- router.get('/get', async(req,res) => {
-    Employee.find((err, doc) => {
-        if(err) {
-            console.log("Error:" + err);
-        }else {
-            console.log("Success");
-            res.json(doc);
-        }
-    })
-})
 
 //get by id
 router.get('/get/:id', async(req, res) => {
