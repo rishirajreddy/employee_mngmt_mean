@@ -8,31 +8,31 @@ import { EmpModel } from "../model/emp.model";
 
 export class EmpService{
     // readonly url = 'http://localhost:5000/employees';
-    // readonly url = '';
+    readonly url = 'employees';
 
     constructor(private http: HttpClient){}
 
     addEmployee(emp: EmpModel){
-        return this.http.post('/post', emp);
+        return this.http.post(`${this.url}/post`, emp);
     }
 
     //get employess list
     getEmployees(){
-        return this.http.get(`/`);
+        return this.http.get(`${this.url}`);
     }
 
     //get employee by id
     getEmployee(_id:string){
-        return this.http.get(`/get/${_id}`);
+        return this.http.get(`${this.url}/get/${_id}`);
     }
 
     //delete employee by id
     deleteEmployee(_id:string){
-        return this.http.delete(`/get/${_id}`);
+        return this.http.delete(`${this.url}/get/${_id}`);
     }
 
     //update employee by id
     updateEmployee(emp:EmpModel){
-        return this.http.put(`/update/${emp._id}`,emp);
+        return this.http.put(`${this.url}/update/${emp._id}`,emp);
     }
 }
