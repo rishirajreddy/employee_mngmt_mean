@@ -1,10 +1,11 @@
 # employee_mngmt_mean
 
-A Simple MEAN WebApp on Employee Management using MEAN stack.
+A Simple <b>MEAN</b> WebApp on Employee Management using <b>MEAN</b> stack.
 
 It simply adds the employee , deletes the employee and updates the employee information
 
-It is deployed to <b>Heorku</b>
+It is deployed to <b>Heroku</b>
+<a href="https://enigmatic-fortress-92115.herokuapp.com/">Here is the heroku link to the web-app</a>
 # Screenshots
 <div align=center>
 <!-- <img src="https://user-images.githubusercontent.com/64702890/116126292-17fad180-a6e4-11eb-8074-c5ab460fc19a.png" height=500 width=300> -->
