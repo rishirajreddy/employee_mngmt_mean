@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 
 dotenv.config();
-const url = "mongodb+srv://mrrobot:mrrobot@empmngmt.cs734kp.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://<username>:<password>@empmngmt.cs734kp.mongodb.net/?retryWrites=true&w=majority";
 
 const connect = async () => {
     await mongoose.connect(url,{
